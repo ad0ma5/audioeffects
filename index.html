@@ -1,0 +1,47 @@
+<style>
+	
+svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#dash{background:black}
+#display{background:pink}
+label{color:white}
+</style>
+
+
+<div id="dash">
+	<button id="" onClick="startApp()">Start</button>
+	<button id="" onClick="stopApp()" >Stop</button>
+	<button id="" onClick="endApp()"  >Pause</button>
+	<button id="" onClick="addEffects()" >Add effects</button>
+	<button id="" onClick="removeEffects()" >remove effects</button>
+	<label>visuals</label>
+	<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
+ 	<select id="effect" >
+		<option value="delay" >Delay</option>
+		<option value="reverb" >Reverb</option>
+ 	</select>
+ 	<button id="" onClick="addEffect()" >Add effect</button>
+ 	<div class="effectcontainer">
+ 	</div>
+ 	<div class="slidecontainer">
+	  <p><label>feedback</label></p>
+	  <input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
+	  
+	  <p><label>time</label></p>
+	  <input onChange="sliderChange(this.value,'time')" id="time" type="range" min="1" max="100" value="50">
+	  
+	  <p><label>mix</label></p>
+	  <input onChange="sliderChange(this.value,'mix')" id="mix" type="range" min="1" max="100" value="50">
+	  
+	</div>
+</div>
+<div id="display">
+	<svg></svg>
+</div>
+<script src="d3.min.js" ></script>
+<script src="Pizzicato.js" ></script>
+<script src="SoundEffectsApp.class.js" ></script>
+<script src="main.js" ></script>
