@@ -23,6 +23,10 @@ label{color:white}
 		<option value="delay" >Delay</option>
 		<option value="reverb" >Reverb</option>
  	</select>
+	<select id="shape" onchange="changeShape(this.value)">
+		<option value="circle" selected = "selected" >Circle</option>
+		<option value="rect" >Rectangle</option>
+	</select>
  	<button id="" onClick="addEffect()" >Add effect</button>
  	<div class="effectcontainer">
  	</div>

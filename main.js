@@ -36,6 +36,14 @@ function removeEffects(){
 	if(app !== null)
 		app.removeEffects()
 }
+
+function changeShape(shape){
+    if(app !== null)
+        app.changeShape(shape)
+
+
+}
+
 function sliderChange(value, key){
 	if(app !== null)
 		app.changeEffect(value, key)
