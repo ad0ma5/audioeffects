@@ -42,7 +42,8 @@ class SoundEffectsApp{
 	    console.log(shape)
 
 	}
-	addEffect(){
+	addEffect(efect){
+        console.log(efect)
 	}	
 	addEffects(){
 		
