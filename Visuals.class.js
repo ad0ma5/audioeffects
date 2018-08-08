@@ -1,5 +1,5 @@
 class Visuals{
-	construct(params = {}){
+	constructor(params = {}){
 		this.sound = params.sound
 		this.doTheStuff()
 	}

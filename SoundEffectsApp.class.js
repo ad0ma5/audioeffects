@@ -55,14 +55,14 @@ class SoundEffectsApp{
 			mix: 0.8,
 			cutoff: 2000
 		});
-		var reverb = new Pizzicato.Effects.Reverb({
+		this.reverb = new Pizzicato.Effects.Reverb({
 			time: 0.06,
 			decay: 0.09,
 			reverse: false,
 			mix: 0.5
 		});
 
-		this.sound.addEffect(reverb);
+		this.sound.addEffect(this.reverb);
 		//this.sound.addEffect(this.dubDelay);
 		//this.sound.addEffect(this.pingPongDelay);
 		this.sound.addEffect(this.delay);
@@ -84,6 +84,7 @@ class SoundEffectsApp{
 	onSoundLoaded() {
 		if(typeof Visuals !== undefined){
 				const visual = new Visuals(this)
+				console.log("Visuals started")
 		}
 	}
 }
