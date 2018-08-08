@@ -19,7 +19,8 @@ label{color:white}
 	<button id="" onClick="removeEffects()" >remove effects</button>
 	<label>visuals</label>
 	<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
- 	<select id="effect" >
+ 	<select id="effect" onchange="addEffect(this.value)">
+ 		<option value="-" selected="selected">-</option>
 		<option value="delay" >Delay</option>
 		<option value="reverb" >Reverb</option>
  	</select>
