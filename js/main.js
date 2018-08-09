@@ -16,9 +16,9 @@ function stopApp(){
 	if(app !== null)
 		app.stopApp()
 }
-function endApp(){
+function pauseApp(){
 	if(app !== null)
-		app.endApp()
+		app.pauseApp()
 }
 	
 function addEffects(){

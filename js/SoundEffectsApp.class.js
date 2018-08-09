@@ -11,14 +11,27 @@ class SoundEffectsApp{
 		//const sound = new Pizzicato.Sound({ source: 'input' }, () => onSoundLoaded());
 		
 		if(this.sound === undefined){
+		//if(true){
 			if(!this.displayVisuals){
 				this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoadedNoVisuals.bind(this));
+				this.sound.volume = 0.5;
+				this.sound.attack  = 0.5;
+				this.sound.release = 0.5;
+				this.sound.frequency = 880; // a5
 			
 			}else{
 				this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoaded.bind(this));
+				this.sound.frequency = 880; // a5
 			}
+			
 		}else{
-			this.sound.play()
+			if(!this.displayVisuals){
+				this.onSoundLoadedNoVisuals()
+			
+			}else{
+				this.onSoundLoaded()
+			}
+			//this.sound.play()
 		}
 	}
 	restartApp(params = {}){
@@ -29,7 +42,7 @@ class SoundEffectsApp{
 		this.sound.stop()
 	}
 	
-	endApp(params = {}){
+	pauseApp(params = {}){
 		console.log('endApp')
 		this.sound.pause()
 	}
@@ -91,8 +104,11 @@ class SoundEffectsApp{
 	}
 	onSoundLoaded() {
 		if(typeof Visuals !== undefined){
-				const visual = new Visuals(this)
+				if(this.visual) delete this.visual
+				this.visual = new Visuals(this)
 				console.log("Visuals started")
+		}else{
+				alert('no visuals')
 		}
 	}
 }

@@ -9,21 +9,50 @@ svg {
   margin-left: auto;
   margin-right: auto;
 }
-#dash{background:black}
-#display{background:pink}
+#dash{background:black; padding: 10px}
+.icons{font-size:30px}
+#display{background:black}
 label{color:white}
-	
+
+.white{color:white;}	
+
+.grey{ color:grey;}
+.green{ color:green;}
 </style>
 
 </head>
 <body>
 	<div class="header">
-		<h1>Audio effects + Visuals</h1>
+		
+		<h1><i class="fas fa-music"></i> Audio effects + Visuals</h1>
 	</div>
-<div id="dash">
+<div id="dash" class="white">
+	<div class="icons">
+		<i class="fas fa-microphone-alt "></i>
+		<i class="fas fa-microphone-alt-slash "></i> MIC
+		<i class="fas fa-music grey"></i>
+		<i class="fas fa-volume-down  grey"></i>
+		<i class="fas fa-volume-up  grey"></i>
+		<i class="fas fa-play  grey"></i>
+		<i class="fas fa-arrow-alt-circle-down   grey"></i>
+		<i class="fas fa-cannabis   green"></i>
+		<i class="fas fa-times-circle"></i>
+		<i class="fas fa-edit   green"></i>
+		<i class="fas fa-plus-circle   green"></i>
+		<i class="fas fa-eye-slash   green"></i>
+		<i class="fas fa-eye   green"></i>
+		<i class="fas fa-shapes   green"></i>
+		
+
+
+
+
+
+
+	</div>
 	<button id="" onClick="startApp()">Start</button>
 	<button id="" onClick="stopApp()" >Stop</button>
-	<button id="" onClick="endApp()"  >Pause</button>
+	<button id="" onClick="pauseApp()"  >Pause</button>
 	<button id="" onClick="addEffects()" >Add effects</button>
 	<button id="" onClick="removeEffects()" >remove effects</button>
 	<label>visuals</label>
@@ -55,12 +84,16 @@ label{color:white}
 <div id="display">
 	<svg></svg>
 </div>
-<script src="d3.min.js" ></script>
-<script src="Pizzicato.js" ></script>
-<script src="Visuals.class.js" ></script>
-<script src="SoundEffectsApp.class.js" ></script>
+<script src="js/d3.min.js" ></script>
+<script src="js/Pizzicato.js" ></script>
+<script src="js/Visuals.class.js" ></script>
+<script src="js/SoundEffectsApp.class.js" ></script>
 
-<script src="main.js" ></script>
+<script src="js/main.js" ></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
 </body>
 </html> 
 

@@ -4,7 +4,7 @@ class Visuals{
 		this.width = Math.min(window.innerHeight, window.innerWidth)
 		this.height = this.width
 		this.numberOfPoints = this.width
-		this.radius = 10
+		this.radius = 15
         this.analyser
         this.radiusScale
         this.colorScale
@@ -69,7 +69,8 @@ class Visuals{
 
 	setupScale() {
 			//this.radiusScale = d3.scaleSqrt().domain([0, 255]).range([1, 32])
-			this.radiusScale = d3.scaleSqrt().domain([0, 255]).range([1, 16])
+			this.radiusScale = d3.scaleSqrt().domain([0, 64,128, 192, 255]).range([1,8,16, 32, 64])
+			//this.radiusScale = d3.scaleSqrt().domain([0, 255]).range([1, 16])
 			this.colorScale = d3.scaleSqrt().domain([0, 64,128, 192, 255]).range(['#673ab7', '#e91e63','#0101DF','#9AFE2E','#F4FA58'])
 			//this.colorScale = d3.scaleSqrt().domain([0, 255]).range(['#555555', '#aaaaaa'])
 	}
