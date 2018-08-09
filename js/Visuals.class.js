@@ -31,7 +31,12 @@ class Visuals{
 	    }
 
 	}
-
+	cleanVisualisation(){
+		const svg =d3.select('svg')
+		Const g = svg.select('g')
+		svg.removeNode(g)
+	}
+		
     drawRect() {
             const svg = d3.select('svg')
                 .attr('width', this.width)
@@ -142,7 +147,11 @@ class Visuals{
 			return Math.pow(2, Math.ceil(Math.log(number) / Math.log( 2 )))
 	}
 
-
+	changeShape(shape){
+		this.shape = shape
+		this.cleanVisualisation()
+		this.setupVisualization()
+	}
 	doTheStuff(){
 		console.log("doTheStuff started")
 	////////////////////
