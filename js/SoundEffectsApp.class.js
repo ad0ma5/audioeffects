@@ -3,6 +3,7 @@ class SoundEffectsApp{
 
 	constructor(params = {}){
 		//this.sound = undefined
+		//this.visual 
 		this.displayVisuals = true
 		this.shape = "circle"
 	}
@@ -52,6 +53,7 @@ class SoundEffectsApp{
 
 	changeShape(shape) {
 	    this.shape = shape
+	    this.visual.changeShape(shape)
 	    console.log(shape)
 
 	}
