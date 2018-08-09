@@ -59,6 +59,7 @@ class SoundEffectsApp{
 	}
 	addEffect(efect){
         console.log(efect)
+        this.visual.addElement('.effectcontainer',{element:'div',text:"test"})
 	}	
 	addEffects(){
 		
@@ -80,7 +81,7 @@ class SoundEffectsApp{
 		});
 		this.reverb = new Pizzicato.Effects.Reverb({
 			time: 0.06,
-			decay: 0.09,
+			decay: 0.9,
 			reverse: false,
 			mix: 0.5
 		});
@@ -96,8 +97,7 @@ class SoundEffectsApp{
 		this.sound.removeEffect(this.reverb);
 		this.sound.removeEffect(this.delay);
 	}
-	changeEffect(value, key){
-		
+	changeEffect(value, key){		
 		console.log(this.delay)
 		this.delay[key] = value/100
 	}

@@ -163,4 +163,16 @@ class Visuals{
 		this.sound.play()
 	////////////////////
 	}
+	
+	addElement(selector,element){
+		const selected = d3.select(selector)
+		console.log(selected)
+		const g = selected.append(element.element).text(element.text)
+		//g.remove()
+		
+	}
+	removeElement(selector){
+		const selected = d3.select(selector)
+		selected.remove()
+	}
 }

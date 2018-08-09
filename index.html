@@ -55,20 +55,25 @@ label{color:white}
 	<button id="" onClick="pauseApp()"  >Pause</button>
 	<button id="" onClick="addEffects()" >Add effects</button>
 	<button id="" onClick="removeEffects()" >remove effects</button>
-	<label>visuals</label>
-	<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
+	
  	<select id="effect" onchange="addEffect(this.value)">
  		<option value="-" selected="selected">-</option>
 		<option value="delay" >Delay</option>
 		<option value="reverb" >Reverb</option>
  	</select>
+ 	<button id="" onClick="addEffect()" >Add effect</button>
+ 	<div class="effectcontainer">
+ 	</div>
+ 	
 	<select id="shape" onchange="changeShape(this.value)">
 		<option value="circle" selected = "selected" >Circle</option>
 		<option value="rect" >Rectangle</option>
 	</select>
- 	<button id="" onClick="addEffect()" >Add effect</button>
- 	<div class="effectcontainer">
- 	</div>
+	
+	<label>visuals</label>
+	<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
+ 	
+ 	
  	<div class="slidecontainer">
 	  <p><label>feedback</label></p>
 	  <input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
