@@ -32,9 +32,10 @@ class Visuals{
 
 	}
 	cleanVisualisation(){
-		const svg =d3.select('svg')
-		Const g = svg.select('g')
-		svg.removeNode(g)
+		const svg = d3.select('svg')
+		console.log(svg)
+		const g = svg.select('g')
+		g.remove()
 	}
 		
     drawRect() {
