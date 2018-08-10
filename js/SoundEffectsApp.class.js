@@ -179,6 +179,9 @@ class SoundEffectsApp{
         //console.log('aa',found.id,'#'+found.id)
         this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-times-circle",text:'',id:'x'+found.id,onClick:"removeEffect('"+found.id+"')"})
         this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-edit ",text:'',id:'e'+found.id,onClick:"editEffect('"+found.id+"')"})
+		
+		//this.visual.getElement('#effectList').selectedIndex = 0
+		
 	}	
 	editEffect(effectid){
 		this.removeSliders()

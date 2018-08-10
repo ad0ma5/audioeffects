@@ -55,12 +55,12 @@ label{color:white}
 
 </head>
 <body>
-	<div class="header">
+	<div class="header ">
 		
 		<i class="fas fa-music"></i> Audio effects + Visuals
 	</div>
 <div id="dash" class="white">
-	<div class="icons">
+	<div class="icons hidden">
 		<i class="fas fa-microphone-alt "></i>
 		<i class="fas fa-microphone-alt-slash "></i> MIC
 		<i class="fas fa-music grey"></i>
@@ -78,7 +78,7 @@ label{color:white}
 	</div>
 	<div class="controll" >
 		<div class="inline">
-			<i class="fas fa-music"></i>
+			<i class="fas fa-play"></i>
 			<button id="startApp" onClick="startApp()">		
 				<i class="fas fa-microphone-alt-slash "></i> 
 				Start
@@ -91,7 +91,7 @@ label{color:white}
 		<div class="inline">
 			<i class="fas fa-signature    "></i>		
 			<select id="effectList" onchange="console.log(this);addEffect(this.value)">
-				<option value="-" selected="selected">-</option>			
+				<option value="-" selected="selected">Select Effect</option>			
 			</select>
 		</div>
 		<div class="inline">
