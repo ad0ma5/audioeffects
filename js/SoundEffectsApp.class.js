@@ -122,7 +122,20 @@ class SoundEffectsApp{
 		console.log('addSlider',found,slider)
 		this.visual.addElement(
 			'#effect_sliders',
-			{element:'div',id:found.id+"_"+slider.key+"_inner",text:found.text+" "+slider.key,onClick:"",value:found.value}
+			{element:'div',id:found.id+"_"+slider.key+"_inner",value:found.value}
+		)
+        this.visual.addElement(
+			'#'+found.id+"_"+slider.key+"_inner",
+			{
+				element:'label',
+				//type:"range",
+				//min:"1",max:"100",text:'',
+				id:'l_'+found.id+"_"+slider.key+"",
+				//onChange:"sliderChange('"+found.id+"',this.value,'"+slider.key+"')",
+				//value:slider.val*100
+				//text:found.text+" "+slider.key
+				text:slider.key
+			}
 		)
         this.visual.addElement(
 			'#'+found.id+"_"+slider.key+"_inner",
@@ -130,11 +143,12 @@ class SoundEffectsApp{
 				element:'input',
 				type:"range",
 				min:"1",max:"100",text:'',
-				id:'i'+found.id,
+				id:'i_'+found.id+"_"+slider.key+"",
 				onChange:"sliderChange('"+found.id+"',this.value,'"+slider.key+"')",
 				value:slider.val*100
 			}
 		)
+        
         
         //<p><label>feedback</label></p>
 		//<input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">

@@ -29,15 +29,28 @@ label{color:white}
 .grey{ color:grey;}
 .green{ color:green;}
 .hidden{display:none;}
-.effectcontainer,
+
 .controll,
 .effectcontainer{
 	margin-bottom:10px
 }
-.effectcontainer i{
+.effectcontainer i,
+.slidecontainer input
+{
     float: right;
     margin-left: 10px;
 }
+.slidecontainer label{
+	width: 30%;
+	display: inline-block;
+}
+.slidecontainer input{
+	width: 69%;
+	display: inline-block;
+}
+
+.inline{display:inline-block;}
+.right{float: right;}
 </style>
 
 </head>
@@ -64,29 +77,34 @@ label{color:white}
 		<i class="fas fa-shapes   green"></i>
 	</div>
 	<div class="controll" >
-		<i class="fas fa-music"></i>
-		<button id="startApp" onClick="startApp()">
-			<i class="fas fa-microphone-alt-slash "></i> 
-			Start
-		</button>
-		<button id="stopApp" onClick="stopApp()" class="hidden">
-			<i class="fas fa-microphone-alt "></i> 
-			Stop
-		</button>
-		
-		<i class="fas fa-signature    "></i>		
-		<select id="effectList" onchange="console.log(this);addEffect(this.value)">
-			<option value="-" selected="selected">-</option>			
-		</select>
-		
-		<i class="fas fa-eye"></i>
-		<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
-		
-		<i class="fas fa-shapes   "></i>
-		<select id="shape" onchange="changeShape(this.value)">
-			<option value="circle" selected = "selected" >Circle</option>
-			<option value="rect" >Rectangle</option>
-		</select>
+		<div class="inline">
+			<i class="fas fa-music"></i>
+			<button id="startApp" onClick="startApp()">		
+				<i class="fas fa-microphone-alt-slash "></i> 
+				Start
+			</button>		
+			<button id="stopApp" onClick="stopApp()" class="hidden">
+				<i class="fas fa-microphone-alt "></i> 
+				Stop
+			</button>
+		</div>
+		<div class="inline">
+			<i class="fas fa-signature    "></i>		
+			<select id="effectList" onchange="console.log(this);addEffect(this.value)">
+				<option value="-" selected="selected">-</option>			
+			</select>
+		</div>
+		<div class="inline">
+			<i class="fas fa-eye"></i>
+			<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
+		</div>
+		<div class="inline">
+			<i class="fas fa-shapes   "></i>
+			<select id="shape" onchange="changeShape(this.value)">
+				<option value="circle" selected = "selected" >Circle</option>
+				<option value="rect" >Rectangle</option>
+			</select>
+		</div>
 		
 	</div>
 	<!--
