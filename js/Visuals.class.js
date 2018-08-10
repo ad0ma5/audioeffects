@@ -171,18 +171,33 @@ class Visuals{
 	addElement(selector,element){
 		const selected = d3.select(selector)
 		console.log(selected)
-		selected
-			.append(element.element)
-			.attr('id',element.id)
-			.attr('onClick',element.onClick)
-			.attr('class',element.class)
-			.attr('value',element.value)
-			.text(element.text)
+		let newElement = selected.append(element.element)
+		if(element.id !== undefined) newElement.attr('id',element.id)
+		if(element.onChange !== undefined) newElement.attr('onChange',element.onChange)
+		if(element.onClick !== undefined) newElement.attr('onClick',element.onClick)
+		if(element.class !== undefined) newElement.attr('class',element.class)
+		if(element.value !== undefined) newElement.attr('value',element.value)
+		if(element.type !== undefined) newElement.attr('type',element.type)
+		if(element.min !== undefined) newElement.attr('min',element.min)
+		if(element.max !== undefined) newElement.attr('max',element.max)
+		if(element.text !== undefined) newElement.text(element.text)
 		//g.remove()
-		
+		//<input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
 	}
 	removeElement(selector){
-		const selected = d3.select(selector)
-		selected.remove()
+		console.log('remove',selector,this.getElement(selector))
+		if(d3.select(selector)){
+		//while(d3.select(selector) !== null){
+			var selected = d3.select(selector)
+			selected.remove()
+		}
+	}
+	removeAllElements(selector){
+		console.log('removeAllElements',selector,this.getElement(selector))
+		if(d3.selectAll(selector)){
+		//while(d3.select(selector) !== null){
+			var selected = d3.selectAll(selector)
+			selected.each().remove()
+		}
 	}
 }

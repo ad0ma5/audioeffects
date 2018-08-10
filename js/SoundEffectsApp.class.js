@@ -117,6 +117,34 @@ class SoundEffectsApp{
 	    console.log(shape)
 
 	}
+	//effect sliders
+	addSlider(found,slider){
+		console.log('addSlider',found,slider)
+		this.visual.addElement(
+			'#effect_sliders',
+			{element:'div',id:found.id+"_"+slider.key+"_inner",text:found.text+" "+slider.key,onClick:"",value:found.value}
+		)
+        this.visual.addElement(
+			'#'+found.id+"_"+slider.key+"_inner",
+			{
+				element:'input',
+				type:"range",
+				min:"1",max:"100",text:'',
+				id:'i'+found.id,
+				onChange:"sliderChange('"+found.id+"',this.value,'"+slider.key+"')",
+				value:slider.val*100
+			}
+		)
+        
+        //<p><label>feedback</label></p>
+		//<input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
+	  
+	}
+	removeSliders(){
+		//this.visual.removeAllElements(".slidecontainer div#effect_sliders")
+		this.visual.removeElement("div#effect_sliders")
+	}
+	//effects
 	initEffects(){
 		for(var i = 0; i < this.effectList.length; i++){
 			var effect = this.effectList[i]
@@ -124,6 +152,7 @@ class SoundEffectsApp{
 		}
 	}
 	addEffect(effectid){
+		if(effectid === "-") return false
         console.log(effectid)
         var found = this.effectList.find( effect => { return effect.id === effectid} )
         console.log(found)
@@ -134,9 +163,31 @@ class SoundEffectsApp{
         this.visual.getElement('#'+found.id+'_option').attr('disabled','disabled')
         this.visual.addElement('.effectcontainer',{element:'div',text:found.text,id:found.id,onClick:found.onClick,value:found.value})
         //console.log('aa',found.id,'#'+found.id)
-        this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-times-circle",text:'',id:'x'+found.id,onClick:"removeEffect('"+found.id+"')",value:null})
-        this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-edit ",text:'',id:'e'+found.id,onClick:"editEffect('"+found.id+"')",value:null})
+        this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-times-circle",text:'',id:'x'+found.id,onClick:"removeEffect('"+found.id+"')"})
+        this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-edit ",text:'',id:'e'+found.id,onClick:"editEffect('"+found.id+"')"})
 	}	
+	editEffect(effectid){
+		this.removeSliders()
+		console.log(effectid)
+        var found = this.effectList.find( effect => { return effect.id === effectid} )
+        console.log(found)
+        
+        var keys = Object.keys(found.config);
+        
+        this.visual.addElement(
+			'.slidecontainer',
+			{element:'div',id:"effect_sliders"}
+		)
+        for(var c = 0;c < keys.length; c++){
+			this.addSlider(found,{key:keys[c],val:found.config[keys[c]]})
+		}
+        //        
+	}
+	changeEffect(effectid, value, key){	
+		var effect = this.activeEffectList[effectid]	
+		console.log(effect)
+		effect[key] = value/100
+	}
 	removeEffect(effectid){
 		console.log(this)
 		this.sound.removeEffect(this.activeEffectList[effectid]);
@@ -144,7 +195,7 @@ class SoundEffectsApp{
 		this.visual.removeElement('#'+effectid)
 		
 		this.visual.getElement('#'+effectid+'_option').attr('disabled',null)//.removeAttribute('disabled')
-        
+        this.removeSliders()
 	}
 	elementHide(selector){
 		this.visual.getElement(selector).attr('class','hidden')
@@ -152,6 +203,7 @@ class SoundEffectsApp{
 	elementShow(selector){
 		this.visual.getElement(selector).attr('class','')
 	}
+	//old
 	addEffects(){
 		
 		this.delay = new Pizzicato.Effects.Delay({
@@ -188,10 +240,7 @@ class SoundEffectsApp{
 		this.sound.removeEffect(this.reverb);
 		this.sound.removeEffect(this.delay);
 	}
-	changeEffect(value, key){		
-		console.log(this.delay)
-		this.delay[key] = value/100
-	}
+	
 	
 	onSoundLoaded() {
 		this.visual.doTheStuff(this.sound)

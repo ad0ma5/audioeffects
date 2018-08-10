@@ -64,12 +64,22 @@ label{color:white}
 	<button id="" onClick="pauseApp()"  >Pause</button>
 	<button id="" onClick="addEffects()" >Add effects</button>
 	<button id="" onClick="removeEffects()" >remove effects</button>
-	-->
+	<button id="" onClick="addEffect()" >Add effect</button>
+	
+	<p><label>feedback</label></p>
+	<input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
+	  
+	  <p><label>time</label></p>
+	  <input onChange="sliderChange(this.value,'time')" id="time" type="range" min="1" max="100" value="50">
+	  
+	  <p><label>mix</label></p>
+	  <input onChange="sliderChange(this.value,'mix')" id="mix" type="range" min="1" max="100" value="50">
+	  
+ 	-->
  	<select id="effectList" onchange="console.log(this);addEffect(this.value)">
  		<option value="-" selected="selected">-</option>
 		
  	</select>
- 	<button id="" onClick="addEffect()" >Add effect</button>
  	<div class="effectcontainer">
  	</div>
  	
@@ -83,14 +93,6 @@ label{color:white}
  	
  	
  	<div class="slidecontainer">
-	  <p><label>feedback</label></p>
-	  <input onChange="sliderChange(this.value,'feedback')" id="feedback" type="range" min="1" max="100" value="50">
-	  
-	  <p><label>time</label></p>
-	  <input onChange="sliderChange(this.value,'time')" id="time" type="range" min="1" max="100" value="50">
-	  
-	  <p><label>mix</label></p>
-	  <input onChange="sliderChange(this.value,'mix')" id="mix" type="range" min="1" max="100" value="50">
 	  
 	</div>
 </div>

@@ -27,6 +27,10 @@ function addEffect(effect){
 	if(app !== null)
 		app.addEffect(effect)
 }
+function editEffect(effect){
+	if(app !== null)
+		app.editEffect(effect)
+}
 function removeEffect(effect){
 	if(app !== null)
 		app.removeEffect(effect)
@@ -49,10 +53,10 @@ function changeShape(shape){
 
 }
 //change any slider function
-function sliderChange(value, key){
+function sliderChange(effectid, value, key){
 	if(app !== null)
-		app.changeEffect(value, key)
-		console.log('slider',value,key)
+		app.changeEffect(effectid, value, key)
+		console.log('slider',effectid, value,key)
 }
 function changeVisual(checked){
 	console.log(checked)
