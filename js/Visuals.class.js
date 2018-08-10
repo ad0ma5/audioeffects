@@ -10,7 +10,8 @@ class Visuals{
         this.colorScale
         this.displayData
         this.sound = params.sound
-        this.doTheStuff()
+        //if(this.displayVisuals)
+			//this.doTheStuff()
 
 	}
 
@@ -153,21 +154,30 @@ class Visuals{
 		this.cleanVisualisation()
 		this.setupVisualization()
 	}
-	doTheStuff(){
+	doTheStuff(sound){
+		this.sound = sound
 		console.log("doTheStuff started")
 	////////////////////
 		this.setupAnalyser(this.sound)
 		this.setupVisualization()
 		this.setupScale()
 		window.requestAnimationFrame(() => this.draw())
-		this.sound.play()
+		
 	////////////////////
 	}
-	
+	getElement(selector){
+		return d3.select(selector)
+	}
 	addElement(selector,element){
 		const selected = d3.select(selector)
 		console.log(selected)
-		const g = selected.append(element.element).text(element.text)
+		selected
+			.append(element.element)
+			.attr('id',element.id)
+			.attr('onClick',element.onClick)
+			.attr('class',element.class)
+			.attr('value',element.value)
+			.text(element.text)
 		//g.remove()
 		
 	}

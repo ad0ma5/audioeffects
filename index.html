@@ -19,6 +19,7 @@ label{color:white}
 
 .grey{ color:grey;}
 .green{ color:green;}
+.hidden{display:none;}
 </style>
 
 </head>
@@ -51,16 +52,22 @@ label{color:white}
 
 
 	</div>
-	<button id="" onClick="startApp()">Start</button>
-	<button id="" onClick="stopApp()" >Stop</button>
+	<button id="startApp" onClick="startApp()">
+		<i class="fas fa-microphone-alt-slash "></i> 
+		Start
+	</button>
+	<button id="stopApp" onClick="stopApp()" class="hidden">
+		<i class="fas fa-microphone-alt "></i> 
+		Stop
+	</button>
+	<!--
 	<button id="" onClick="pauseApp()"  >Pause</button>
 	<button id="" onClick="addEffects()" >Add effects</button>
 	<button id="" onClick="removeEffects()" >remove effects</button>
-	
- 	<select id="effect" onchange="addEffect(this.value)">
+	-->
+ 	<select id="effectList" onchange="console.log(this);addEffect(this.value)">
  		<option value="-" selected="selected">-</option>
-		<option value="delay" >Delay</option>
-		<option value="reverb" >Reverb</option>
+		
  	</select>
  	<button id="" onClick="addEffect()" >Add effect</button>
  	<div class="effectcontainer">
