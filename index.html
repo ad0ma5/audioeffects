@@ -44,22 +44,28 @@ label{color:white}
 		<i class="fas fa-eye-slash   green"></i>
 		<i class="fas fa-eye   green"></i>
 		<i class="fas fa-shapes   green"></i>
-		
-
-
-
-
-
-
 	</div>
-	<button id="startApp" onClick="startApp()">
-		<i class="fas fa-microphone-alt-slash "></i> 
-		Start
-	</button>
-	<button id="stopApp" onClick="stopApp()" class="hidden">
-		<i class="fas fa-microphone-alt "></i> 
-		Stop
-	</button>
+	<div class="controll" >
+		<button id="startApp" onClick="startApp()">
+			<i class="fas fa-microphone-alt-slash "></i> 
+			Start
+		</button>
+		<button id="stopApp" onClick="stopApp()" class="hidden">
+			<i class="fas fa-microphone-alt "></i> 
+			Stop
+		</button>
+		
+		<select id="effectList" onchange="console.log(this);addEffect(this.value)">
+			<option value="-" selected="selected">-</option>			
+		</select>
+		<label>visuals</label>
+		<select id="shape" onchange="changeShape(this.value)">
+			<option value="circle" selected = "selected" >Circle</option>
+			<option value="rect" >Rectangle</option>
+		</select>
+		<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
+		
+	</div>
 	<!--
 	<button id="" onClick="pauseApp()"  >Pause</button>
 	<button id="" onClick="addEffects()" >Add effects</button>
@@ -76,29 +82,17 @@ label{color:white}
 	  <input onChange="sliderChange(this.value,'mix')" id="mix" type="range" min="1" max="100" value="50">
 	  
  	-->
- 	<select id="effectList" onchange="console.log(this);addEffect(this.value)">
- 		<option value="-" selected="selected">-</option>
-		
- 	</select>
+ 	
  	<div class="effectcontainer">
  	</div>
- 	
-	<select id="shape" onchange="changeShape(this.value)">
-		<option value="circle" selected = "selected" >Circle</option>
-		<option value="rect" >Rectangle</option>
-	</select>
-	
-	<label>visuals</label>
-	<input type="checkbox" id="visuals" onChange="changeVisual(this.checked)" value="1" checked="checked" />
- 	
- 	
- 	<div class="slidecontainer">
-	  
+ 	<div class="slidecontainer">	  
 	</div>
 </div>
+
 <div id="display">
 	<svg></svg>
 </div>
+
 <script src="js/d3.min.js" ></script>
 <script src="js/Pizzicato.js" ></script>
 <script src="js/Visuals.class.js" ></script>
