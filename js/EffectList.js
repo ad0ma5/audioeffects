@@ -45,10 +45,10 @@ const _effectList = [
 	},
 	{
 		element:'option',
-		text:'Distortion ',
-		id:'Distortion ',
+		text:'Distortion',
+		id:'Distortion',
 		onClick:"",
-		value:'Distortion ',
+		value:'Distortion',
 		config:{
 			gain: 0.5
 		}
