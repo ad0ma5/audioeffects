@@ -4,6 +4,17 @@ class SoundEffectsApp{
 	constructor(params = {}){
 		//this.sound = undefined
 		//this.visual 
+		
+		this.config = {
+			//frequency: 880, //if wave
+			volume: 1.0,
+			attack: 0.004,
+			release: 0.004  
+		}
+		this.config_range = {
+			attack: {min:0.004,max:10},
+			release: {min:0.004,max:10}
+		}
 		this.displayVisuals = true
 		this.shape = "circle"
 		this.effectList = []
@@ -25,6 +36,9 @@ class SoundEffectsApp{
 		
 		if(this.sound === undefined){
 			this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoaded.bind(this));
+			this.sound.volume = this.config.volume
+			this.sound.attack = this.config.attack
+			this.sound.release = this.config.release
 			//if(true){
 			//if(!this.displayVisuals){
 				//this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoadedNoVisuals.bind(this));
@@ -58,6 +72,31 @@ class SoundEffectsApp{
 		console.log('endApp')
 		this.sound.pause()
 	}
+	editApp(){
+		this.removeSliders()
+		console.log("main edit")
+        var found = {
+			element:'option',
+			text:'Main',
+			id:'Main',
+			onClick:"",
+			value:'Main',
+			config:this.config,
+			config_range:this.config_range
+		}
+        console.log(found)
+        
+        var keys = Object.keys(found.config);
+        
+        this.visual.addElement(
+			'.slidecontainer',
+			{element:'div',id:"effect_sliders"}
+		)
+        for(var c = 0;c < keys.length; c++){
+			this.addSlider(found,{key:keys[c],val:found.config[keys[c]]})
+		}
+        // 
+	}
 	changeVisual(checked){
 		this.displayVisuals = checked
 	}
@@ -89,8 +128,9 @@ class SoundEffectsApp{
 			}
 		)
 		var sliderVal = slider.val*100
-		if(found.config_range !== undefined){
-			sliderVal = (slider.val - found.config_range.min) / (found.config_range.max - found.config_range.min) * 100
+		if(found.config_range !== undefined && found.config_range[slider.key] !== undefined ){
+			console.log("AAA",slider.val , found.config_range[slider.key].min,slider.val - found.config_range[slider.key].min, '/', found.config_range[slider.key].max - found.config_range[slider.key].min)
+			sliderVal = (slider.val - found.config_range[slider.key].min) / (found.config_range[slider.key].max - found.config_range[slider.key].min) * 100
 			
 		}
         this.visual.addElement(
@@ -157,8 +197,25 @@ class SoundEffectsApp{
         //        
 	}
 	changeEffect(effectid, value, key){	
-		var effect = this.activeEffectList[effectid]	
-		var found = this.effectList.find( effect => { return effect.id === effectid} )
+		
+		var effect = null
+		var found = null
+		if(effectid === "Main"){
+			effect = this.sound
+			found = {
+				element:'option',
+				text:'Main',
+				id:'Main',
+				onClick:"",
+				value:'Main',
+				config:this.config,
+				config_range:this.config_range
+			}
+		}else{
+			effect = this.activeEffectList[effectid]
+			found = this.effectList.find( effect => { return effect.id === effectid} )
+			
+		}
 		console.log('changeEffect',effectid, value, key)
 		if(typeof found.config[key] === Boolean){
 			console.log('boolean')
@@ -173,9 +230,10 @@ class SoundEffectsApp{
 		}else
 			if(found.config_range !== undefined && found.config_range[key] !== undefined){
 				
-				effect[key] = found.config[key]  = found.config_range.min + (
-					(found.config_range.max - found.config_range.min) / 100 * value
+				effect[key] = found.config[key] = found.config_range[key].min + (
+					(found.config_range[key].max - found.config_range[key].min) / 100 * value
 				)
+				console.log(found, found.config_range[key].max - found.config_range[key].min, (found.config_range[key].max - found.config_range[key].min) / 100  ,effect[key] )
 			}else{
 				console.log('trololo 100',found)
 				effect[key] = value/100

@@ -21,7 +21,10 @@ function pauseApp(){
 	if(app !== null)
 		app.pauseApp()
 }
-	
+function editApp(){
+	if(app !== null)
+		app.editApp()
+}
 //effect list
 function addEffect(effect){
 	if(app !== null)
