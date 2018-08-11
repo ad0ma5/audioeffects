@@ -88,6 +88,11 @@ class SoundEffectsApp{
 				text:slider.key
 			}
 		)
+		var sliderVal = slider.val*100
+		if(found.config_range !== undefined){
+			sliderVal = (slider.val - found.config_range.min) / (found.config_range.max - found.config_range.min) * 100
+			
+		}
         this.visual.addElement(
 			'#'+found.id+"_"+slider.key+"_inner",
 			{
@@ -96,7 +101,7 @@ class SoundEffectsApp{
 				min:"1",max:"100",text:'',
 				id:'i_'+found.id+"_"+slider.key+"",
 				onChange:"sliderChange('"+found.id+"',this.value,'"+slider.key+"')",
-				value:slider.val*100
+				value:sliderVal
 			}
 		)
         
@@ -120,7 +125,7 @@ class SoundEffectsApp{
 		if(effectid === "-") return false
         console.log(effectid)
         var found = this.effectList.find( effect => { return effect.id === effectid} )
-        console.log(found)
+        //console.log(found)
         //add actuall effect to sound
         this.activeEffectList[effectid] = new Pizzicato.Effects[found.id](found.config)
         this.sound.addEffect(this.activeEffectList[effectid]);
@@ -153,11 +158,31 @@ class SoundEffectsApp{
 	}
 	changeEffect(effectid, value, key){	
 		var effect = this.activeEffectList[effectid]	
-		effect[key] = value/100
-		//console.log(effect)
-		console.log('saving')
 		var found = this.effectList.find( effect => { return effect.id === effectid} )
-		found.config[key]=value/100
+		console.log('changeEffect',effectid, value, key)
+		if(typeof found.config[key] === Boolean){
+			console.log('boolean')
+			if(value < 50){
+				effect[key] = false
+				found.config[key] = false
+			}else{
+				effect[key] = true
+				found.config[key] = true	
+			} 
+			
+		}else
+			if(found.config_range !== undefined && found.config_range[key] !== undefined){
+				
+				effect[key] = found.config[key]  = found.config_range.min + (
+					(found.config_range.max - found.config_range.min) / 100 * value
+				)
+			}else{
+				console.log('trololo 100',found)
+				effect[key] = value/100
+				found.config[key] = value/100
+			
+			}
+		console.log(effect,effect[key] )
 	}
 	removeEffect(effectid){
 		console.log(this)

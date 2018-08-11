@@ -34,7 +34,10 @@ const _effectList = [
 			time: 0.5,
 			mix: 0.5,
 			cutoff: 2000,
-			cutoff_range:{
+			
+		},
+		config_range:{
+			cutoff:{
 				min:0,
 				max:4000
 			}
@@ -85,19 +88,21 @@ const _effectList = [
 		value:'Compressor',
 		config:{ 
 			threshold: -20, 
-			threshold_range:{
-				min:-100,
-				max:0
-			},
 			knee: 22, 
-			knee_range:{
-				min:0,
-				max:40
-			},
 			attack: 0.05, 
 			release: 0.05, 
 			ratio: 18,
-			ratio_range:{
+		},
+		config_range:{
+			threshold:{
+				min:-100,
+				max:0
+			},
+			knee:{
+				min:0,
+				max:40
+			},
+			ratio:{
 				min:0,
 				max:10
 			}
@@ -111,9 +116,12 @@ const _effectList = [
 		value:'LowPassFilter',
 		config:{
 			frequency: 11025,
-			frequency_range:{min: 10, max: 22050},
 			peak: 10,
-			peak_range:{min: 0.0001, max: 1000}
+			
+		},
+		config_range:{
+			frequency:{min: 10, max: 22050},
+			peak:{min: 0.0001, max: 1000}
 		}
 	},
 	{
@@ -124,9 +132,12 @@ const _effectList = [
 		value:'HighPassFilter',
 		config:{
 			frequency: 11025,
-			frequency_range:{min: 10, max: 22050},
 			peak: 10,
-			peak_range:{min: 0.0001, max: 1000}
+			
+		},
+		config_range:{
+			frequency:{min: 10, max: 22050},
+			peak:{min: 0.0001, max: 1000}
 		
 		}
 	},
@@ -138,7 +149,10 @@ const _effectList = [
 		value:'StereoPanner',
 		config:{
 			pan: 0.5,
-			pan_range:{min:-1, max:1}
+			
+		},
+		config_range:{
+			pan:{min:-1, max:1}
 		}
 	},
 	{
@@ -160,11 +174,14 @@ const _effectList = [
 		value:'Reverb',
 		config:{
 			time: 1.5,
-			time_range:{min: 0.0001, max: 10},
 			decay: 1.5,
-			decay_range:{min: 0, max: 10},
 			reverse: false,//do smthng aboutit
 			mix: 0.5
+		},
+		config_range:{
+			decay:{min: 0, max: 10},
+			time:{min: 0.0001, max: 10},
+			
 		}
 	},
 	{
@@ -175,10 +192,12 @@ const _effectList = [
 		value:'RingModulator',
 		config:{
 			speed: 1000,
-			speed_range:{min: 0, max: 2000},
 			distortion: 25,
-			distortion_range:{min: 0.2, max: 50},
 			mix: 0.5
+		},
+		config_range:{
+			speed:{min: 0, max: 2000},
+			distortion:{min: 0.2, max: 50}
 		}
 	},	
 	{
@@ -189,9 +208,12 @@ const _effectList = [
 		value:'Tremolo',
 		config:{
 			speed: 10,
-			speed_range:{min: 0, max: 20},
 			depth: 0.5,
 			mix: 0.5
+		},
+		config_range:{
+			speed:{min: 0, max: 20},
+			
 		}
 	},
 	

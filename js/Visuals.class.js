@@ -170,7 +170,7 @@ class Visuals{
 	}
 	addElement(selector,element){
 		const selected = d3.select(selector)
-		console.log(selected)
+		//console.log(selected)
 		let newElement = selected.append(element.element)
 		if(element.id !== undefined) newElement.attr('id',element.id)
 		if(element.onChange !== undefined) newElement.attr('onChange',element.onChange)
