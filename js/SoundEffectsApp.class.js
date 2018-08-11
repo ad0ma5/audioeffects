@@ -6,58 +6,9 @@ class SoundEffectsApp{
 		//this.visual 
 		this.displayVisuals = true
 		this.shape = "circle"
-		this.effectList = [
-			{
-				element:'option',
-				text:'Delay',
-				id:'Delay',
-				onClick:"",
-				value:'Delay',
-				config:{
-					feedback: 0.9,
-					time: 0.8,
-					mix: 0.8
-				}
-			},
-			{
-				element:'option',
-				text:'PingPongDelay',
-				id:'PingPongDelay',
-				onClick:"",
-				value:'PingPongDelay',
-				config:{
-					feedback: 0.9,
-					time: 0.8,
-					mix: 0.8
-				}
-			},
-			{
-				element:'option',
-				text:'DubDelay',
-				id:'DubDelay',
-				onClick:"",
-				value:'DubDelay',
-				config:{
-					feedback: 0.1,
-					time: 0.9,
-					mix: 0.8,
-					cutoff: 2000
-				}
-			},
-			{
-				element:'option',
-				text:'Reverb',
-				id:'Reverb',
-				onClick:"",
-				value:'Reverb',
-				config:{
-					time: 0.06,
-					decay: 0.9,
-					reverse: false,
-					mix: 0.5
-				}
-			},
-		]
+		this.effectList = []
+		if(_effectList !== undefined)
+			this.effectList  = _effectList
 		this.activeEffectList = {}
 		if(typeof Visuals !== undefined){
 				if(this.visual) delete this.visual
@@ -181,7 +132,7 @@ class SoundEffectsApp{
         this.visual.addElement('#'+found.id,{element:'i',class:"fas fa-edit ",text:'',id:'e'+found.id,onClick:"editEffect('"+found.id+"')"})
 		
 		//this.visual.getElement('#effectList').selectedIndex = 0
-		
+		this.removeSliders()
 	}	
 	editEffect(effectid){
 		this.removeSliders()
@@ -202,8 +153,11 @@ class SoundEffectsApp{
 	}
 	changeEffect(effectid, value, key){	
 		var effect = this.activeEffectList[effectid]	
-		console.log(effect)
 		effect[key] = value/100
+		//console.log(effect)
+		console.log('saving')
+		var found = this.effectList.find( effect => { return effect.id === effectid} )
+		found.config[key]=value/100
 	}
 	removeEffect(effectid){
 		console.log(this)
