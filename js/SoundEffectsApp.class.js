@@ -98,18 +98,30 @@ class SoundEffectsApp{
         // 
 	}
 	changeVisual(checked){
+		//console.log('changeVisual', checked)
 		this.displayVisuals = checked
+		this.visual.changeVisual(checked)
+		
+		if(checked){
+			//console.log('truehere', checked)
+			this.elementShow('#stopVisual')
+			this.elementHide('#startVisual')
+		}else{
+			//console.log('falsehere', checked)
+			this.elementShow('#startVisual')
+			this.elementHide('#stopVisual')
+		}
 	}
 
 	changeShape(shape) {
 	    this.shape = shape
 	    this.visual.changeShape(shape)
-	    console.log(shape)
+	    //console.log(shape)
 
 	}
 	//effect sliders
 	addSlider(found,slider){
-		console.log('addSlider',found,slider)
+		//console.log('addSlider',found,slider)
 		this.visual.addElement(
 			'#effect_sliders',
 			{element:'div',id:found.id+"_"+slider.key+"_inner",value:found.value}
@@ -163,7 +175,7 @@ class SoundEffectsApp{
 	}
 	addEffect(effectid){
 		if(effectid === "-") return false
-        console.log(effectid)
+        //console.log(effectid)
         var found = this.effectList.find( effect => { return effect.id === effectid} )
         //console.log(found)
         //add actuall effect to sound
@@ -181,9 +193,9 @@ class SoundEffectsApp{
 	}	
 	editEffect(effectid){
 		this.removeSliders()
-		console.log(effectid)
+		//console.log(effectid)
         var found = this.effectList.find( effect => { return effect.id === effectid} )
-        console.log(found)
+        //console.log(found)
         
         var keys = Object.keys(found.config);
         
@@ -216,7 +228,7 @@ class SoundEffectsApp{
 			found = this.effectList.find( effect => { return effect.id === effectid} )
 			
 		}
-		console.log('changeEffect',effectid, value, key)
+		//console.log('changeEffect',effectid, value, key)
 		if(typeof found.config[key] === Boolean){
 			console.log('boolean')
 			if(value < 50){
@@ -235,15 +247,15 @@ class SoundEffectsApp{
 				)
 				console.log(found, found.config_range[key].max - found.config_range[key].min, (found.config_range[key].max - found.config_range[key].min) / 100  ,effect[key] )
 			}else{
-				console.log('trololo 100',found)
+				//console.log('trololo 100',found)
 				effect[key] = value/100
 				found.config[key] = value/100
 			
 			}
-		console.log(effect,effect[key] )
+		//console.log(effect,effect[key] )
 	}
 	removeEffect(effectid){
-		console.log(this)
+		//console.log(this)
 		this.sound.removeEffect(this.activeEffectList[effectid]);
 		
 		this.visual.removeElement('#'+effectid)

@@ -10,6 +10,7 @@ class Visuals{
         this.colorScale
         this.displayData
         this.sound = params.sound
+        this.displayVisuals = params.displayVisuals
         //if(this.displayVisuals)
 			//this.doTheStuff()
 
@@ -24,12 +25,14 @@ class Visuals{
 	}
 
 	setupVisualization() {
-	    if (this.shape === "circle"){
-	        this.drawCircle()
-	    }
-	    else if (this.shape === "rect") {
-            this.drawRect()
-	    }
+		if(this.displayVisuals){
+			if (this.shape === "circle"){
+				this.drawCircle()
+			}
+			else if (this.shape === "rect") {
+				this.drawRect()
+			}
+		}
 
 	}
 	cleanVisualisation(){
@@ -83,6 +86,7 @@ class Visuals{
 	}
 
 	draw() {
+		if(this.displayVisuals){
 			this.analyser.getByteFrequencyData(this.displayData)
 			const lowerCut = 0.15
 			const upperCut = 0.1
@@ -96,7 +100,10 @@ class Visuals{
                 this.updateCircle(data)
 			}
 
-			window.requestAnimationFrame(() => this.draw())
+			
+		}
+		
+		window.requestAnimationFrame(() => this.draw())
 	}
 
 	updateRect(data) {
@@ -148,7 +155,11 @@ class Visuals{
 	nextPowerOf2(number){
 			return Math.pow(2, Math.ceil(Math.log(number) / Math.log( 2 )))
 	}
-
+	changeVisual(checked){
+		this.displayVisuals = checked
+		this.cleanVisualisation()
+		this.setupVisualization()
+	}
 	changeShape(shape){
 		this.shape = shape
 		this.cleanVisualisation()
