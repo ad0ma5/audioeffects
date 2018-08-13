@@ -15,11 +15,14 @@ class SoundEffectsApp{
 			attack: {min:0.004,max:10},
 			release: {min:0.004,max:10}
 		}
+		
 		this.displayVisuals = true
 		this.shape = "circle"
 		this.effectList = []
+		// EffectList.js
 		if(_effectList !== undefined)
 			this.effectList  = _effectList
+			
 		this.activeEffectList = {}
 		if(typeof Visuals !== undefined){
 				if(this.visual) delete this.visual
@@ -29,6 +32,21 @@ class SoundEffectsApp{
 		}else{
 				alert('no visuals')
 		}
+		
+		this.mic
+		this.file
+	}
+	groupSounds(){
+		if(this.mic !== undefined && this.file !== undefined){
+			this.sound = new Pizzicato.Group([this.mic, this.file]);
+		}else if(this.mic !== undefined){
+			this.sound = this.mic 
+		}else if(this.file !== undefined){
+			this.sound = this.file
+		}
+		this.sound.volume = this.config.volume
+		this.sound.attack = this.config.attack
+		this.sound.release = this.config.release
 	}
 	playSound(){
 		this.sound.play()	
@@ -49,10 +67,11 @@ class SoundEffectsApp{
 		this.elementHide('#pauseSound')
 	}
 	startFile(file){
-		this.sound = new Pizzicato.Sound({ 
+		this.file = new Pizzicato.Sound({ 
 				source: 'file',
 				options: { path: file}
-		}, this.onSoundLoaded.bind(this));
+		}, this.onSoundLoaded.bind(this));//it starts
+		this.groupSounds()
 		this.elementHide('#startApp')
 		this.elementHide('#stopApp')
 	}
@@ -61,10 +80,8 @@ class SoundEffectsApp{
 		//const sound = new Pizzicato.Sound({ source: 'input' }, () => onSoundLoaded());
 		
 		if(this.sound === undefined){
-			this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoaded.bind(this));
-			this.sound.volume = this.config.volume
-			this.sound.attack = this.config.attack
-			this.sound.release = this.config.release
+			this.mic = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoaded.bind(this));
+			this.groupSounds()
 			
 			//if(true){
 			//if(!this.displayVisuals){
