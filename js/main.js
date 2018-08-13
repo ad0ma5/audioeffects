@@ -13,6 +13,16 @@ function startApp(){
 		app.startApp()
 }
 	
+
+function startFile(file){
+	var userFile = file //document.getElementById('file');
+	userFile.src = URL.createObjectURL(file.files[0]);
+	var data = userFile.src;
+  
+	if(app !== null)
+		app.startFile(data)
+}
+	
 function stopApp(){
 	if(app !== null)
 		app.stopApp()

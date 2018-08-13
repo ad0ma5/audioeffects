@@ -30,6 +30,13 @@ class SoundEffectsApp{
 				alert('no visuals')
 		}
 	}
+	startFile(file){
+		this.sound = new Pizzicato.Sound({ 
+				source: 'file',
+				options: { path: file}
+		}, this.onSoundLoaded.bind(this));
+			
+	}
 	startApp(params = {}){
 		
 		//const sound = new Pizzicato.Sound({ source: 'input' }, () => onSoundLoaded());
@@ -39,6 +46,7 @@ class SoundEffectsApp{
 			this.sound.volume = this.config.volume
 			this.sound.attack = this.config.attack
 			this.sound.release = this.config.release
+			
 			//if(true){
 			//if(!this.displayVisuals){
 				//this.sound = new Pizzicato.Sound({ source: 'input' }, this.onSoundLoadedNoVisuals.bind(this));

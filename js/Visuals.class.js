@@ -4,7 +4,7 @@ class Visuals{
 		this.width = Math.min(window.innerHeight, window.innerWidth)
 		this.height = this.width
 		this.numberOfPoints = this.width
-		this.radius = 15
+		this.radius = 11
         this.analyser
         this.radiusScale
         this.colorScale
