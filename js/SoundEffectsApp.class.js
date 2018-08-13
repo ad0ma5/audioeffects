@@ -30,12 +30,31 @@ class SoundEffectsApp{
 				alert('no visuals')
 		}
 	}
+	playSound(){
+		this.sound.play()	
+		this.elementHide('#playSound')
+		this.elementShow('#stopSound')
+		this.elementShow('#pauseSound')
+	}
+	stopSound(){
+		this.sound.stop()	
+		this.elementShow('#playSound')
+		this.elementHide('#stopSound')
+		this.elementHide('#pauseSound')
+	}
+	pauseSound(){
+		this.sound.pause()	
+		this.elementShow('#playSound')
+		this.elementShow('#stopSound')
+		this.elementHide('#pauseSound')
+	}
 	startFile(file){
 		this.sound = new Pizzicato.Sound({ 
 				source: 'file',
 				options: { path: file}
 		}, this.onSoundLoaded.bind(this));
-			
+		this.elementHide('#startApp')
+		this.elementHide('#stopApp')
 	}
 	startApp(params = {}){
 		
@@ -61,7 +80,9 @@ class SoundEffectsApp{
 			//}
 			
 		}else{
-			this.sound.play()
+			//change to play with buttons
+			//this.sound.play()
+			this.playSound()
 		}
 		this.elementHide('#startApp')
 		this.elementShow('#stopApp')
@@ -318,6 +339,8 @@ class SoundEffectsApp{
 	
 	onSoundLoaded() {
 		this.visual.doTheStuff(this.sound)
-		this.sound.play()
+		//change to play with buttons
+		//this.sound.play()
+		this.playSound()
 	}
 }

@@ -7,7 +7,20 @@ if(typeof SoundEffectsApp !== undefined && typeof Pizzicato !== undefined ){
 	}else{
 		alert("missing class SoundEffectsApp")
 	}
-
+//sound
+function playSound(){
+	if(app !== null)
+		app.playSound()
+}
+function stopSound(){
+	if(app !== null)
+		app.stopSound()
+}
+function pauseSound(){
+	if(app !== null)
+		app.pauseSound()
+}
+//App
 function startApp(){
 	if(app !== null)
 		app.startApp()
@@ -31,6 +44,7 @@ function pauseApp(){
 	if(app !== null)
 		app.pauseApp()
 }
+
 function editApp(){
 	if(app !== null)
 		app.editApp()

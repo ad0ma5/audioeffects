@@ -84,7 +84,7 @@ label{color:white}
 		<i class="fas fa-music"></i> Audio effects + Visuals
 	</div>
 <div id="dash" class="white">
-	<div class="icons hidden">
+	<div class="icons hidden.">
 		
 		<i class="fas fa-music grey"></i>
 		<i class="fas fa-skull grey"></i>
@@ -104,7 +104,20 @@ label{color:white}
 	<div class="controll" >
 		<div class="inline">
 			<input type="file" id="file" onChange="console.log(this);startFile(this)" />
-			<i class="fas fa-play"></i>
+		</div>
+		<div class="inline">			
+			<button id="stopSound" onClick="stopSound()">		
+				<i class="fas fa-stop "></i> 
+				Stop
+			</button>	
+			<button id="playSound" onClick="playSound()">		
+				<i class="fas fa-play "></i> 
+				Play
+			</button>	
+			<button id="pauseSound" onClick="pauseSound()">		
+				<i class="fas fa-pause "></i> 
+				Pause
+			</button>		
 			<button id="startApp" onClick="startApp()">		
 				<i class="fas fa-microphone-alt-slash "></i> 
 				OFF
