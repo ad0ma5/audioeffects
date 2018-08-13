@@ -72,8 +72,8 @@ class SoundEffectsApp{
 				options: { path: file}
 		}, this.onSoundLoaded.bind(this));//it starts
 		this.groupSounds()
-		this.elementHide('#startApp')
-		this.elementHide('#stopApp')
+		//this.elementHide('#startApp')
+		//this.elementHide('#stopApp')
 	}
 	startApp(params = {}){
 		
